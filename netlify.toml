@@ -1,0 +1,19 @@
+# Configuración de despliegue en Netlify (Vite SPA + React Router)
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Las rutas del cliente (/login, /admin, /calls…) deben servir index.html.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Variables de entorno necesarias en el panel de Netlify (Site settings → Env):
+#   VITE_SUPABASE_URL
+#   VITE_SUPABASE_PUBLISHABLE_KEY
+#   VITE_STRIPE_PUBLISHABLE_KEY
+#   VITE_STRIPE_PRICE_ID
+#   VITE_GMAIL_CLIENT_ID
+#   VITE_DEMO_MODE=false
+# (Son claves públicas/publishable; las secretas viven en Supabase, no aquí.)
